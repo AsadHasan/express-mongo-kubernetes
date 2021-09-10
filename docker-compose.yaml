@@ -1,0 +1,12 @@
+services:
+  mongodb:
+    image: registry.hub.docker.com/library/mongo
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
+    container_name: ${DBHOSTNAME}
+  express:
+    build: .
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    depends_on:
+      - mongodb
