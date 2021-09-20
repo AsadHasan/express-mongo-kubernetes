@@ -1,10 +1,5 @@
 name: Docker
 
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 on:
   schedule:
     - cron: '42 3 * * *'
@@ -44,6 +39,12 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Retrieve semver version and short git hash
+        run: |
+          echo "::set-output name=VERSION::$(node -p -e 'require("./package.json").version')"
+          echo "::set-output name=GITHASH::$(git rev-parse --short HEAD)"
+        id: tags
+
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
@@ -52,7 +53,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=semver,pattern={{version}},value=v${{ node -p -e "require('./package.json').version" }}:${{ git rev-parse --short HEAD }}
+            type=semver,pattern={{version}},value=v${{ steps.tags.outputs.VERSION }}:${{ steps.tags.outputs.GITHASH }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
