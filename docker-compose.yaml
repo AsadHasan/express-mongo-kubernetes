@@ -5,7 +5,9 @@ services:
       - ${MONGO_PORT}:${MONGO_PORT}
     container_name: ${DBHOSTNAME}
   express:
-    build: .
+    build:
+      context: .
+      target: release
     ports:
       - ${EXPRESS_PORT}:${EXPRESS_PORT}
     depends_on:
