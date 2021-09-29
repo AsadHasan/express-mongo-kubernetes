@@ -30,6 +30,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.2",
-    "dotenv-defaults": "^2.0.2"
+    "dotenv-defaults": "^3.0.0"
   }
 }
