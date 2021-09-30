@@ -12,3 +12,13 @@ services:
       - ${EXPRESS_PORT}:${EXPRESS_PORT}
     depends_on:
       - mongodb
+  e2e-tests:
+    image: node
+    depends_on:
+      - express
+    volumes:
+      - ./:/app
+    working_dir: /app
+    entrypoint: ['npm', 'test']
+    environment:
+      - BASE_URL=http://express:${EXPRESS_PORT}

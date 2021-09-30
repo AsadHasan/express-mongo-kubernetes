@@ -17,6 +17,10 @@ A basic API, built using [Express](https://expressjs.com/) server and [MongoDB](
 
 Run `docker-compose up` (requires `docker-compose`)
 
+## Testing
+
+Basic end-to-end tests exist in `tests` folder, that can be run via the `npm run e2e-tests` script (requires `docker-compose`). Tests call the API via `Axios` and run via `ts-jest`.
+
 ## Issues
 
 `Helm` chart has been created (via [Kompose](https://kompose.io/)). It can be packaged and installed on `Kubernetes`, however the service does not yet work on Kubernetes (Express server container unable to connect to Mongo) and needs fixing.
