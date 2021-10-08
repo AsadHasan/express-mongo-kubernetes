@@ -19,21 +19,23 @@
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "posttest": "npm run lint",
-    "e2e-tests": "docker-compose run --rm e2e-tests;docker-compose down"
+    "build-test-service": "source .env && pack build \"$SERVICE_NAME\" --builder gcr.io/buildpacks/builder:v1",
+    "e2e-tests": "npm run build-test-service && docker-compose run --rm e2e-tests;docker-compose down"
   },
   "devDependencies": {
     "@types/dotenv-defaults": "^2.0.1",
-    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
-    "gts": "^3.1.0",
+    "axios": "^0.22.0",
     "jest": "^27.2.4",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.4.3"
+    "ts-jest": "^27.0.5"
   },
   "dependencies": {
+    "@types/express": "^4.17.13",
     "dotenv-defaults": "^3.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.0.8"
+    "gts": "^3.1.0",
+    "mongoose": "^6.0.8",
+    "typescript": "^4.4.3"
   }
 }

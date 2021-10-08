@@ -1,0 +1,28 @@
+[project]
+id = "express-mongo-service"
+name = "Express Mongo Service"
+version = "0.1.0"
+
+[build]
+exclude = [
+    "/README.md",
+    ".vscode",
+    "node_modules",
+    "build",
+    ".idea",
+    ".env",
+    "target",
+    "charts",
+    "helm",
+    ".dockerignore",
+    "Dockerfile",
+    "docker-compose.yaml",
+    ".env",
+    ".eslintrc",
+    ".eslintignore",
+    "test",
+    ".gitignore",
+    ".prettierrc.js",
+    "jest.config.js",
+    "LICENSE"
+]

@@ -5,9 +5,7 @@ services:
       - ${MONGO_PORT}:${MONGO_PORT}
     container_name: ${DBHOSTNAME}
   express:
-    build:
-      context: .
-      target: release
+    image: ${SERVICE_NAME}
     ports:
       - ${EXPRESS_PORT}:${EXPRESS_PORT}
     depends_on:
@@ -19,6 +17,6 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
-    entrypoint: ['npm', 'test']
+    entrypoint: ['bash', '-c', 'npm install && npm test']
     environment:
       - BASE_URL=http://express:${EXPRESS_PORT}
