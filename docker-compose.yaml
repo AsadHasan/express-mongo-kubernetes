@@ -10,6 +10,7 @@ services:
       - ${EXPRESS_PORT}:${EXPRESS_PORT}
     depends_on:
       - mongodb
+    entrypoint: ['launcher', 'npm run compile && node ./build/src/index.js']
   e2e-tests:
     image: node
     depends_on:

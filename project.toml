@@ -26,3 +26,7 @@ exclude = [
     "jest.config.js",
     "LICENSE"
 ]
+
+[[build.env]]
+name = "NODE_ENV"
+value = "production"
