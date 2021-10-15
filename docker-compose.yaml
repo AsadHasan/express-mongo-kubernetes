@@ -12,6 +12,12 @@ services:
       - ${EXPRESS_PORT_NUMBER}:${EXPRESS_PORT_NUMBER}
     depends_on:
       - mongodb
+    healthcheck:
+      test: 'curl localhost:3000/testcases'
+      interval: '30s'
+      timeout: '5s'
+      start_period: '5s'
+      retries: 3
   e2e-tests:
     image: node
     depends_on:
