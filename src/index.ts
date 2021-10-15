@@ -6,7 +6,7 @@ import mongoose = require('mongoose');
 import console = require('console');
 
 const app = express();
-const port = process.env.EXPRESS_PORT;
+const port = process.env.EXPRESS_PORT_NUMBER;
 const testCaseSchema = new mongoose.Schema<TestCase>({
   name: String,
   summary: String,
@@ -15,7 +15,7 @@ const testCaseSchema = new mongoose.Schema<TestCase>({
 const testCaseModel = mongoose.model<TestCase>('TestCase', testCaseSchema);
 const connectToMongo = async () =>
   mongoose.connect(
-    `mongodb://${process.env.DBHOSTNAME}:${process.env.MONGO_PORT}/test`
+    `mongodb://${process.env.DBHOSTNAME}:${process.env.MONGO_PORT_NUMBER}/test`
   );
 
 app.use(express.json());

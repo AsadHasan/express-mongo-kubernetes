@@ -2,14 +2,14 @@ services:
   mongodb:
     image: registry.hub.docker.com/library/mongo
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - ${MONGO_PORT_NUMBER}:${MONGO_PORT_NUMBER}
     container_name: ${DBHOSTNAME}
   express:
     build:
       context: .
       target: release
     ports:
-      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+      - ${EXPRESS_PORT_NUMBER}:${EXPRESS_PORT_NUMBER}
     depends_on:
       - mongodb
   e2e-tests:
@@ -21,4 +21,4 @@ services:
     working_dir: /app
     entrypoint: ['npm', 'test']
     environment:
-      - BASE_URL=http://express:${EXPRESS_PORT}
+      - BASE_URL=http://express:${EXPRESS_PORT_NUMBER}
