@@ -15,7 +15,7 @@ A basic API, built using [Express](https://expressjs.com/) server and [MongoDB](
 
 ## To run locally
 
-Run `docker-compose up` (requires `docker-compose`)
+Run `docker-compose run --rm express` (requires `docker-compose`)
 
 ## Testing
 
