@@ -3,7 +3,7 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: mongo
+    app: mongo
   name: mongo
 spec:
   ports:
@@ -11,4 +11,4 @@ spec:
       port: 27017
       targetPort: 27017
   selector:
-    io.kompose.service: mongo
+    app: mongo

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: express
+    app: express
   name: express
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: express
+      app: express
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: express
+        app: express
     spec:
       containers:
         - image: express-mongo-service_express

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: mongo
+    app: mongo
   name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: mongo
+      app: mongo
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: mongo
+        app: mongo
     spec:
       containers:
         - image: registry.hub.docker.com/library/mongo
