@@ -5,3 +5,4 @@ build
 .env
 target
 charts
+.cr-release-packages
