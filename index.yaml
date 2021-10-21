@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  express-mongo:
+  - apiVersion: v1
+    created: "2021-10-21T18:18:43.461022889Z"
+    description: A generated Helm Chart for docker-compose from Skippbox Kompose
+    digest: db78f9ca2065f6370292d79ff04713be97572e74cd83cb200dc97c0d4c16be55
+    keywords:
+    - docker-compose
+    name: express-mongo
+    urls:
+    - https://github.com/AsadHasan/express-mongo-kubernetes/releases/download/express-mongo-1.0.0/express-mongo-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-10-21T18:18:43.461029189Z"
