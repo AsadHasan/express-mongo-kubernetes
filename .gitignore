@@ -4,5 +4,4 @@ build
 .idea
 .env
 target
-charts
 .cr-release-packages
