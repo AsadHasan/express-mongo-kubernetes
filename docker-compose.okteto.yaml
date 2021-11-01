@@ -1,0 +1,30 @@
+services:
+  mongodb:
+    image: registry.hub.docker.com/library/mongo
+    ports:
+      - 27017:27017
+    container_name: mongo
+  express:
+    build:
+      context: .
+      target: release
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    healthcheck:
+      test: 'curl localhost:3000/testcases'
+      interval: '30s'
+      timeout: '5s'
+      start_period: '5s'
+      retries: 3
+  e2e-tests:
+    image: node
+    depends_on:
+      - express
+    volumes:
+      - ./:/app
+    working_dir: /app
+    entrypoint: ['npm', 'test']
+    environment:
+      - BASE_URL=http://express:3000
