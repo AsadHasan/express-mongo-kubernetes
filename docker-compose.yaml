@@ -2,14 +2,14 @@ services:
   mongodb:
     image: registry.hub.docker.com/library/mongo
     ports:
-      - ${MONGO_PORT_NUMBER}:${MONGO_PORT_NUMBER}
-    container_name: ${DBHOSTNAME}
+      - ${MONGO_PORT_NUMBER:-27017}:${MONGO_PORT_NUMBER:-27017}
+    container_name: ${DBHOSTNAME:-mongo}
   express:
     build:
       context: .
       target: release
     ports:
-      - ${EXPRESS_PORT_NUMBER}:${EXPRESS_PORT_NUMBER}
+      - ${EXPRESS_PORT_NUMBER:-3000}:${EXPRESS_PORT_NUMBER:-3000}
     depends_on:
       - mongodb
     healthcheck:
@@ -27,4 +27,4 @@ services:
     working_dir: /app
     entrypoint: ['npm', 'test']
     environment:
-      - BASE_URL=http://express:${EXPRESS_PORT_NUMBER}
+      - BASE_URL=http://express:${EXPRESS_PORT_NUMBER:-3000}
