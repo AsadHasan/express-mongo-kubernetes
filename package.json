@@ -22,7 +22,7 @@
     "e2e-tests": "docker-compose run --rm e2e-tests;docker-compose down"
   },
   "devDependencies": {
-    "@types/dotenv-defaults": "^2.0.2",
+    "@types/dotenv-defaults": "^2.0.3",
     "@types/express": "^4.17.20",
     "@types/jest": "^27.5.0",
     "@types/node": "^20.8.6",
